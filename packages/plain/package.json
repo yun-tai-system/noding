@@ -1,0 +1,29 @@
+{
+	"name": "@noding/plain",
+	"version": "1.0.0",
+	"sideEffects": false,
+	"description": "noding plain none dependence",
+	"keywords": [
+		"noding"
+	],
+	"author": "imeepos <1037483576@qq.com>",
+	"homepage": "",
+	"license": "ISC",
+	"main": "src/index.js",
+    "types": "src/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+	"directories": {
+		"lib": "src"
+	},
+	"files": [
+		"src"
+	],
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"dependencies": {
+		"@noding/decorator": "^1.0.0"
+	}
+}

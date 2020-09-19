@@ -1,0 +1,29 @@
+{
+	"name": "@noding/decorator",
+	"version": "1.0.0",
+	"sideEffects": false,
+	"description": "noding decorator none dependence",
+	"keywords": [
+		"noding"
+	],
+	"author": "imeepos <1037483576@qq.com>",
+	"homepage": "",
+	"license": "ISC",
+	"main": "src/index.js",
+    "types": "src/index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+	"directories": {
+		"lib": "src"
+	},
+	"files": [
+		"src"
+	],
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"dependencies": {
+		"reflect-metadata": "^0.1.13"
+	}
+}
