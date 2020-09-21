@@ -25,7 +25,7 @@ export class BasicApplication extends Application {
   async start(): Promise<void> {
     const app = new Koa();
     app.use((ctx) => {
-      ctx.body = `welcome to use noding!`;
+      ctx.body = `welcome to use noding basic!`;
     });
     app.listen(parseInt(this.platform.config.port), () => {
       console.log(`app start http://localhost:${this.platform.config.port}`);

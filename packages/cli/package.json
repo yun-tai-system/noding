@@ -1,6 +1,6 @@
 {
-  "name": "@noding/framework",
-  "version": "1.0.1",
+  "name": "@noding/cli",
+  "version": "1.0.0",
   "sideEffects": false,
   "description": "noding di none dependence",
   "keywords": [
@@ -12,6 +12,9 @@
   "license": "ISC",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "bin": {
+    "noding": "src/bin.js"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -25,6 +28,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@noding/decorator": "^1.0.0"
+    "@noding/framework": "^1.0.0",
+    "@noding/install": "^1.0.0"
   }
 }
