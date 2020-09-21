@@ -1,0 +1,24 @@
+{
+  "version": "next",
+  "db": {
+    "type": "postgres",
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": "",
+    "database": ""
+  },
+  "redis": {
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": ""
+  },
+  "mq": {
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": ""
+  },
+  "main": ""
+}

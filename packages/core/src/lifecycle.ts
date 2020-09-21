@@ -53,10 +53,10 @@ export function isErrorHandler(val: any): val is ErrorHandler {
 	return val && Reflect.has(val, 'handle');
 }
 
-export interface NotaddInterceptor {
+export interface nodingInterceptor {
 	intercept<T = any>(context: Injector, next: HandlerFunc): Observable<T>;
 }
-export function isNotaddInterceptor(val: any): val is NotaddInterceptor {
+export function isnodingInterceptor(val: any): val is nodingInterceptor {
 	return val && Reflect.has(val, 'intercept');
 }
 

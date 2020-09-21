@@ -22,7 +22,7 @@ interface URLSearchParams {
   values(): IterableIterator<string>;
 }
 import { InjectionToken, Providers } from "@noding/di";
-export const ControllerMetadataKey = `@notadd/core ControllerMetadataKey`;
+export const ControllerMetadataKey = `@noding/core ControllerMetadataKey`;
 export interface ControllerOptions {
   /**
    * // todo
@@ -55,10 +55,10 @@ export const Controller = createClassDecorator<ControllerOptions | string>(
   }
 );
 
-export const RunMetadataKey = `@notadd/core RUN`;
+export const RunMetadataKey = `@noding/core RUN`;
 export const Run = createMethodDecorator(RunMetadataKey);
 
-export const CurrentMetadataKey = `@notadd/core CurrentMetadataKey`;
+export const CurrentMetadataKey = `@noding/core CurrentMetadataKey`;
 export interface CurrentOptions {
   key: string;
 }
@@ -74,13 +74,13 @@ export const Current = createDecorator<string | CurrentOptions>(
   }
 );
 
-export const IpMetadataKey = `@notadd/core IpMetadataKey`;
+export const IpMetadataKey = `@noding/core IpMetadataKey`;
 export const Ip = createPropertyDecorator<{}>(IpMetadataKey);
 
 export interface ArgsOptions {
   key: string;
 }
-export const ArgsMetadataKey = `@notadd/core ArgsMetadataKey`;
+export const ArgsMetadataKey = `@noding/core ArgsMetadataKey`;
 export const Args = createDecorator<ArgsOptions | string>(
   ArgsMetadataKey,
   (it: any) => {
@@ -93,13 +93,13 @@ export const Args = createDecorator<ArgsOptions | string>(
     it.options = options;
   }
 );
-export const ARGS = new InjectionToken<any>(`@notadd/core ARGS`);
+export const ARGS = new InjectionToken<any>(`@noding/core ARGS`);
 
-export const UuidMetadataKey = `@notadd/typeorm UuidMetadataKey`;
+export const UuidMetadataKey = `@noding/typeorm UuidMetadataKey`;
 export const Uuid = createPropertyDecorator<any>(UuidMetadataKey);
 
-export const PARAMS = new InjectionToken<any[]>(`notadd/core PARAMS`);
-export const ParamMetadataKey = `@notadd/core ParamsMetadataKey`;
+export const PARAMS = new InjectionToken<any[]>(`noding/core PARAMS`);
+export const ParamMetadataKey = `@noding/core ParamsMetadataKey`;
 export interface ParamOptions {
   key: string;
 }
@@ -116,7 +116,7 @@ export const Param = createDecorator<string | ParamOptions>(
   }
 );
 
-export const QueryMetadataKey = "@notadd/http QueryMetadatakey";
+export const QueryMetadataKey = "@noding/http QueryMetadatakey";
 export interface QueryOptions {
   key: string;
 }
@@ -133,4 +133,4 @@ export const Query = createDecorator<string | QueryOptions>(
   }
 );
 
-export const QUERY = new InjectionToken<URLSearchParams>(`notadd/core QUERY`);
+export const QUERY = new InjectionToken<URLSearchParams>(`@noding/core QUERY`);

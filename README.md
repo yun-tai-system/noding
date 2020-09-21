@@ -1,9 +1,13 @@
 # Noding RFC
 
+刚刚好，不多也不少
+
+
+addons 应用
+node_module 库
+attachments 附件
 
 # The RFC life cycle
-
-
 
 
 ```ts

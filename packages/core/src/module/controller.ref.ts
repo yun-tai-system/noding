@@ -23,7 +23,7 @@ import {
 } from "../logger";
 import { EntityService } from "../entity";
 export const CONTROLLER_MIDDLEWARES = new InjectionToken<Middleware[]>(
-  `@notadd/core CONTROLLER_MIDDLEWARES`
+  `@noding/core CONTROLLER_MIDDLEWARES`
 );
 export class ControllerMethodRef<T> {
   get type(): Type<T> {

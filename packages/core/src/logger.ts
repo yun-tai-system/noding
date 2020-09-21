@@ -16,16 +16,16 @@ export type LoggerLevel =
   | "log"
   | "error";
 export const LOGGER_LEVEL = new InjectionToken<LoggerLevel[]>(
-  `@notadd/core LOGGER_LEVEL`
+  `@noding/core LOGGER_LEVEL`
 );
 export const LOGGER_TIME = new InjectionToken<boolean>(
-  `@notadd/core LOGGER_TIME`
+  `@noding/core LOGGER_TIME`
 );
 export const LOGGER_CONTEXT = new InjectionToken<string>(
-  `@notadd/core LOGGER_CONTEXT`
+  `@noding/core LOGGER_CONTEXT`
 );
 export const LOGGER_METHOD = new InjectionToken<string>(
-  `@notadd/core LOGGER_METHOD`
+  `@noding/core LOGGER_METHOD`
 );
 export abstract class LoggerFactory {
   abstract create(context: string): Logger;

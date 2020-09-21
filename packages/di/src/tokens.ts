@@ -16,28 +16,28 @@ export const GET_INGER_DECORATOR = new InjectionToken<GetIngerDecorator>(
 );
 
 export const METHOD_ARGS = new InjectionToken<any[]>(
-  `@notadd/core METHOD_ARGS`
+  `@noding/core METHOD_ARGS`
 );
 export const METHOD_RESULT = new InjectionToken<any>(
-  `@notadd/core METHOD_RESULT`
+  `@noding/core METHOD_RESULT`
 );
 export const METHOD_NGER = new InjectionToken<IMethodDecorator<any, any>>(
-  `@notadd/core METHOD_NGER`
+  `@noding/core METHOD_NGER`
 );
 export const METHOD_ERROR = new InjectionToken<IMethodDecorator<any, any>>(
-  `@notadd/core METHOD_ERROR`
+  `@noding/core METHOD_ERROR`
 );
 export const CLASS_NGER = new InjectionToken<INgerDecorator<any, any>>(
-  `@notadd/core CLASS_NGER`
+  `@noding/core CLASS_NGER`
 );
 
 /**
  * 默认全局异常处理
  */
 export const DEFAULT_ERROR_FILTER = new InjectionToken<ErrorFilter>(
-  `@notadd/core DEFAULT_ERROR_FILTER`
+  `@noding/core DEFAULT_ERROR_FILTER`
 );
 
 export const SKIP_MULTIS = new InjectionToken<InjectionToken<any>[]>(
-  `@notadd/core SKIP_MULTIS`
+  `@noding/core SKIP_MULTIS`
 );
