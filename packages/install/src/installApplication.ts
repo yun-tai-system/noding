@@ -6,6 +6,7 @@ import KoaRouter = require("koa-router");
 import { writeFileSync } from "fs-extra";
 const KoaBody = require("koa-body");
 const KoaStatic = require("koa-static");
+
 export class InstallApplication extends Application {
   onInit(): Promise<void> {
     throw new Error("Method not implemented.");
@@ -17,7 +18,6 @@ export class InstallApplication extends Application {
     throw new Error("Method not implemented.");
   }
   async install(): Promise<boolean | Error> {
-    writeFileSync(this.platform.lock, "");
     return true;
   }
   upgrade(): Promise<boolean | Error> {
@@ -29,26 +29,32 @@ export class InstallApplication extends Application {
   async checkUpgrade(): Promise<boolean | Error> {
     return false;
   }
-
   private installBasic() {
-    return ``;
+    return `@noding/basic`;
   }
-
   private installNext() {
-    return ``;
+    return `@noding/next`;
   }
-
   private installPro() {
-    return ``;
+    return `@noding/pro`;
   }
   /**
    * 启动应用安装程序
    */
+  app: Koa;
+  appStoped: boolean;
   async start(): Promise<void> {
     const app = new Koa();
     const port = 5050;
     const router = new KoaRouter();
     app.use(KoaBody());
+    app.use(async (ctx, next) => {
+      if (this.appStoped) {
+        ctx.body = `I am sorry, app has installed!`;
+        return;
+      }
+      await next()
+    });
     router.get("/systeminfo", (ctx) => {
       ctx.body = {
         version: "1.0",
@@ -70,25 +76,28 @@ export class InstallApplication extends Application {
         default:
           break;
       }
-      writeFileSync(
-        join(this.platform.root, "noding.json"),
-        JSON.stringify(body, null, 2)
-      );
-      const app = require(body.main).default;
-      this.platform.stop();
-      this.platform.setApp(app);
-      this.platform.start();
+      writeFileSync(this.platform.configFile, JSON.stringify(body, null, 2));
+      const app = await import(body.main).then((res) => res.default);
+      this.platform.stop().then(() => {
+        this.platform.setApp(app);
+        this.platform.start();
+      });
+      ctx.body = {
+        port: `${this.platform.config.port}`,
+      };
     });
     app.use(KoaStatic(join(__dirname, "public")));
     app.use(router.routes()).use(router.allowedMethods());
     app.listen(port, () => {
       console.log(`请打开 http://localhost:${port} 进行安装`);
     });
+    this.app = app;
   }
   restart(): Promise<void> {
     throw new Error("Method not implemented.");
   }
   async stop(): Promise<void> {
-    process.exit(0);
+    // 关闭
+    this.appStoped = true;
   }
 }

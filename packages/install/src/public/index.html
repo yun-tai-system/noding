@@ -53,6 +53,15 @@
                 <option  value="pro">高级版</option>
               </select>
             </div>
+            <div class="form-group">
+              <label for="port">端口号</label>
+              <input
+                type="text"
+                class="form-control"
+                id="port"
+                placeholder="请输入端口号"
+              />
+            </div>
         </div>
       </div>
       <div class="row">
@@ -207,7 +216,6 @@
           </div>
         </div>
       </div>
-      
       <div class="row mt-4">
         <button
           type="button"
@@ -225,7 +233,7 @@
         const systemInfo = document.getElementById("system-info");
         let html = ``;
         html += `<p><b>当前版本号：</b>${version}</p>`;
-        html += `<p>请填写配置信息，完成安装!</p>`;
+        html += `<p>请填写配置信息，点击<b>立即安装!</b></p>`;
         systemInfo.innerHTML = html;
         versionDiv.innerHTML = `${version}`;
         console.log(res);
@@ -233,11 +241,15 @@
       const installBtn = document.getElementById("install");
       installBtn.addEventListener("click", () => {
         const data = getData();
-        axios.post("/install", data);
+        axios.post("/install", data).then((res)=>{
+          const location = window.location;
+          window.location.href = `${location.protocol||'http:'}//${location.hostname}:${res.port}`;
+        });
       });
       function getData() {
         return {
           version: getInputValueById('version'),
+          port: getInputValueById('port'),
           db: {
             type: getInputValueById("db_type"),
             host: getInputValueById("db_host"),

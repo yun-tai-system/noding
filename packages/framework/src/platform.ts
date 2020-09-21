@@ -2,9 +2,32 @@ import { join } from "path";
 import { Application } from "./application";
 import { existsSync, readFileSync } from "fs-extra";
 
-export interface PlatformDbConfig {}
+export interface PlatformDbConfig {
+  type: string;
+  host: string;
+  port: number;
+  username: string;
+  password: string;
+}
+export interface PlatformRedisConfig {
+  host: string;
+  port: number;
+  username: string;
+  password: string;
+}
+export interface PlatformMqConfig {
+  host: string;
+  port: number;
+  username: string;
+  password: string;
+}
 export interface PlatformConfig {
+  main: string;
+  version: string;
+  port: string;
   db: PlatformDbConfig[];
+  redis: PlatformRedisConfig;
+  mq: PlatformMqConfig;
 }
 export class Platform {
   /**
@@ -13,19 +36,14 @@ export class Platform {
   get root() {
     return process.cwd();
   }
-  /**
-   * 锁文件
-   */
-  get lock() {
-    return join(this.root, "noding.loc");
+  get configFile() {
+    return join(this.root, "noding.json");
   }
   /**
    * 配置文件
    */
   get config(): PlatformConfig {
-    const content = readFileSync(join(this.root, "noding.json")).toString(
-      "utf-8"
-    );
+    const content = readFileSync(this.configFile).toString("utf-8");
     return JSON.parse(content);
   }
   /**
@@ -65,7 +83,7 @@ export class Platform {
    * 检查是否安装
    */
   checkInstalled() {
-    return existsSync(this.lock);
+    return existsSync(this.configFile);
   }
   /**
    * 启动
