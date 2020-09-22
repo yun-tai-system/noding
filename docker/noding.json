@@ -1,0 +1,25 @@
+{
+  "version": "basic",
+  "port": "8080",
+  "db": {
+    "type": "postgres",
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": "",
+    "database": ""
+  },
+  "redis": {
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": ""
+  },
+  "mq": {
+    "host": "",
+    "port": "",
+    "username": "",
+    "password": ""
+  },
+  "main": "@noding/basic"
+}
